@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlowbiteService } from './flowbite.service';
+import { UserService } from './user.service';
 
-describe('FlowbiteService', () => {
-  let service: FlowbiteService;
+describe('UserService', () => {
+  let service: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FlowbiteService);
+    service = TestBed.inject(UserService);
   });
 
   it('should be created', () => {

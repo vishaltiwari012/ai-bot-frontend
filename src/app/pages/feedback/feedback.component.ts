@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-feedback',

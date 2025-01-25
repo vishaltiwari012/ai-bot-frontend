@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from '../../utils/shared.component';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../services/api/api.service';
 import { Message } from '../../models/message';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '../../services/snackbar/snackbar.service';
+import { ApiResponse } from '../../models/auth.model';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +12,7 @@ import { SnackbarService } from '../../services/snackbar.service';
   styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-  snackbarService: SnackbarService = inject(SnackbarService);
+  private snackbarService = inject(SnackbarService);
   apiService = inject(ApiService);
 
   inputTextPrompt: string = '';

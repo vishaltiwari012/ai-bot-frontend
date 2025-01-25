@@ -1,35 +1,50 @@
 import { Routes } from '@angular/router';
-import { ChatComponent } from './pages/chat/chat.component';
-import { CricketComponent } from './pages/cricket/cricket.component';
-import { ImageComponent } from './pages/image/image.component';
-import { FeedbackComponent } from './pages/feedback/feedback.component';
-import { HelpusComponent } from './pages/helpus/helpus.component';
+import { authGuard } from './guards/auth/auth.guard';
+
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'chat',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
+        path: 'login',
+        loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
+    },
+    {
+        path: 'signup',
+        loadComponent: () => import('./pages/signup/signup.component').then(m => m.SignupComponent)
+    },
+    {
+        path:'my-profile',
+        loadComponent: () => import('./pages/my-profile/my-profile.component').then(m => m.MyProfileComponent)
+    },
+    {
         path: 'chat',
-        component: ChatComponent,
+        loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent), // lazy load chat component (feature of standalone component)
+        canActivate: [authGuard]
     },
     {
         path: 'cricket',
-        component: CricketComponent
+        loadComponent: () => import('./pages/cricket/cricket.component').then(m => m.CricketComponent),
+        canActivate: [authGuard]
+        
     },
     {
         path: 'image',
-        component : ImageComponent
+        loadComponent: () => import('./pages/image/image.component').then(m => m.ImageComponent),
+        canActivate: [authGuard]
     },
     {
         path: 'feedback',
-        component: FeedbackComponent
+        loadComponent: () => import('./pages/feedback/feedback.component').then(m => m.FeedbackComponent),
+        canActivate: [authGuard]
     },
     {
         path: 'help-us',
-        component: HelpusComponent
+        loadComponent: () => import('./pages/helpus/helpus.component').then(m => m.HelpusComponent),
+        canActivate: [authGuard]
     }
 
 ];

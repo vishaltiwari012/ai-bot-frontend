@@ -1,0 +1,38 @@
+<div class="p-6 bg-gray-300 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">My Profile</h1>
+    @if (user) {
+        <div class="mb-4">
+            <label class="font-semibold text-gray-700">Name:</label>
+            <span class="ml-2 text-gray-600">{{ user.name }}</span>
+        </div>
+        <div class="mb-4">
+            <label class="font-semibold text-gray-700">Email:</label>
+            <span class="ml-2 text-gray-600">{{ user.email }}</span>
+        </div>
+        <div class="mb-4">
+            <label class="font-semibold text-gray-700">Roles:</label>
+            <span class="ml-2 text-gray-600">
+                {{ user.roles.join(', ') }}
+            </span>
+        </div>
+        <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" (click)="logout()">
+            Logout
+        </button>
+    } @else {
+        <div loadingOrError>
+        
+        </div>
+    }
+    
+
+    <ng-template #loadingOrError>
+        @if (errorMessage) {
+            <p class="text-red-500">{{ errorMessage }}</p>
+        }
+        @if (!errorMessage) {
+            <p class="text-gray-500">Loading your profile...</p>
+        }
+        
+        
+    </ng-template>
+</div>
